@@ -48,4 +48,6 @@ class ComplicatedLogic {
     }
 }
 
-class PaymentInfo{}
+class PaymentInfo{
+    var amount = " paid $5.00"
+}
