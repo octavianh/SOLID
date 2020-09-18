@@ -49,16 +49,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //MARK: - LOOK AT THIS FIRST
     //
+    
     var paymentTakingService: PaymentTakingService = PaymentTakingService()
     
-    @IBAction func loginToPaymentTakingService(){
+    @IBAction func loginPressed(){
         presentLoginScreen {
             //'S' 2) replace w/ User.login() - this doesn't belong in PaymentTakingService
             self.paymentTakingService.logIn()
         }
     }
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //'S' 1) replace w/ User.isLoggedIn() - this doesn't belong in PaymentTakingService
         
@@ -96,14 +95,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //MARK: - LOOK AT THIS SECOND
 
 class PaymentTakingService {
-    func isLoggedIn() -> Bool { ComplicatedLogic.shared.figureOutIfWeAreLoggedIn() }
-    func logIn() { ComplicatedLogic.shared.loginUser() }
-    func takeVisaPayment(_ paymentInfo: PaymentInfo)
-        { print("visa:" + paymentInfo.amount) }
-    func takeMasterCardPayment(_ paymentInfo: PaymentInfo)
-        { print("mc:" + paymentInfo.amount) }
-    func takeGiftcardPayment(_ paymentInfo: PaymentInfo, parent: ViewController)
-        { self.activateQRScanner(paymentInfo, hostViewController: parent) }
+    func isLoggedIn() -> Bool {
+        ComplicatedLogic.shared.figureOutIfWeAreLoggedIn()
+    }
+    func logIn() {
+        ComplicatedLogic.shared.loginUser()
+    }
+    func takeVisaPayment(_ paymentInfo: PaymentInfo) {
+        print("visa:" + paymentInfo.amount)
+    }
+    func takeMasterCardPayment(_ paymentInfo: PaymentInfo) {
+        print("mc:" + paymentInfo.amount)
+    }
+    func takeGiftcardPayment(_ paymentInfo: PaymentInfo, parent: ViewController) { self.activateQRScanner(paymentInfo, hostViewController: parent)
+    }
     
     //MARK: - private funcs
     private func activateQRScanner(_ paymentInfo:PaymentInfo, hostViewController: ViewController) {

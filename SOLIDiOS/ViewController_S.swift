@@ -21,7 +21,7 @@ class ViewController_S: ViewController {
     var user:User = User()
     var qrScanner:QRScanner = QRScanner()
     
-    @IBAction override func loginToPaymentTakingService(){
+    @IBAction override func loginPressed() {
         presentLoginScreen {
             self.user.logIn()
         }
