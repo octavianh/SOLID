@@ -8,24 +8,43 @@
 import Foundation
 import UIKit
 
+protocol PaymentProcessor {
+    func takePayment(method:PaymentMethod,
+                     paymentInfo:PaymentInfo)
+}
+
 class ViewController_SOLID: ViewController_SOLI {
 
+    var paymentProcessor: PaymentProcessor?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        paymentProcessor = SOLIDPaymentProcessor(qrScanner: self.qrScanner, presenter: self)
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !user.isLoggedIn() {
             showError("not logged in")
             return
         }
         let method = paymentMethods()[indexPath.row]
-        PaymentProcessor.takePayment(method: method, paymentInfo: paymentInfo, presenter: self)
+        paymentProcessor?.takePayment(method: method, paymentInfo: paymentInfo)
     }
 }
 
-class PaymentProcessor {
-    static func takePayment(method:PaymentMethod, paymentInfo:PaymentInfo, presenter:ViewController){
+class SOLIDPaymentProcessor: PaymentProcessor {
+    var qrScanner: QRScanner
+    var presenter: ViewController
+    
+    init(qrScanner:QRScanner, presenter: ViewController){
+        self.qrScanner = qrScanner
+        self.presenter = presenter
+    }
+    
+    func takePayment(method:PaymentMethod,
+                     paymentInfo:PaymentInfo){
         
         let service = BetterPaymentServiceFactory.paymentService(method: method)
-        let qrScanner:QRScanner = QRScanner()
-        qrScanner.presenter = presenter
         
         switch method {
         case .giftcard:
