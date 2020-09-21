@@ -30,7 +30,7 @@ class QRScanner {}
 */
 
 class BasePaymentTakingService {
-    //'I': Well this sucks
+    //NEXT STEP: 'I': Well this sucks, why is everything inheriting the qrScanner function?
     func takePayment(paymentInfo:PaymentInfo, qrScanner:QRScanner) {}
     func takePayment(paymentInfo:PaymentInfo) {}
 }
@@ -54,7 +54,6 @@ class PaymentServiceFactory {
 }
 
 class VisaPaymentTakingService: BasePaymentTakingService {
-    //'I': all of these funcs are useless
     override func takePayment(paymentInfo:PaymentInfo, qrScanner:QRScanner) { takePayment(paymentInfo:paymentInfo) }
     override func takePayment(paymentInfo:PaymentInfo) { }
 }

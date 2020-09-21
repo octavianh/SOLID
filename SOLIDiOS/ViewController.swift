@@ -12,7 +12,7 @@ enum PaymentMethod: String{
     case mastercard = "mastercard"
     case giftcard = "giftcard"
     case paypal = "paypal"
-    //case mercadolibre = "mercadolibre"
+    case mercadolibre = "mercadolibre"
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -54,12 +54,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func loginPressed(){
         presentLoginScreen {
-            //'S' 2) replace w/ User.login() - this doesn't belong in PaymentTakingService
+            //NEXT STEP: 'S' 2) replace w/ User.login() - this doesn't belong in PaymentTakingService
             self.paymentTakingService.logIn()
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //'S' 1) replace w/ User.isLoggedIn() - this doesn't belong in PaymentTakingService
+        //NEXT STEP: 'S' 1) replace w/ User.isLoggedIn() - this doesn't belong in PaymentTakingService
         
         if !paymentTakingService.isLoggedIn() {
             showError("not logged in")
@@ -74,7 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case .mastercard:
             paymentTakingService.takeMasterCardPayment(self.paymentInfo)
         case .giftcard:
-            //'S' 3) replace w/ QRScanner.activateScanner() - this doesn't belong in PaymentTakingService
+            //NEXT STEP: 'S' 3) replace w/ QRScanner.activateScanner() - this doesn't belong in PaymentTakingService
             paymentTakingService.takeGiftcardPayment(self.paymentInfo, parent: self)
         default:
             print("unsupported")

@@ -14,7 +14,7 @@ class ViewController_S: ViewController {
     //MARK: - WORRY ABOUT ME
     //
     
-    //'O': what if we add paypal here
+    //NEXT STEP: 'O': what if we add paypal here
     //override func paymentMethods() -> [PaymentMethod] { [.visa, .mastercard, .giftcard, .paypal] }
     
     var betterPaymentTakingService: BetterPaymentTakingService = BetterPaymentTakingService()
@@ -32,8 +32,8 @@ class ViewController_S: ViewController {
             showError("not logged in")
             return
         }
-        //'O' let's switch these funcs out for classes that we get from a Factory
-        //'L' notice that we'd get Liskov for free if we did that
+        //NEXT STEP: 'O' let's switch these funcs out for classes that we get from a Factory
+        //NEXT STEP: 'L' notice that we'd get Liskov for free if we did that
         switch paymentMethods()[indexPath.row] {
         case .visa:
             betterPaymentTakingService.takeVisaPayment(paymentInfo)
@@ -63,8 +63,12 @@ class QRScanner {
 }
 
 class BetterPaymentTakingService {
-    func takeVisaPayment(_ paymentInfo:PaymentInfo) {}
-    func takeMasterCardPayment(_ paymentInfo:PaymentInfo) {}
+    func takeVisaPayment(_ paymentInfo:PaymentInfo) {
+        print("visa:" + paymentInfo.amount)
+    }
+    func takeMasterCardPayment(_ paymentInfo:PaymentInfo) {
+        print("mc:" + paymentInfo.amount)
+    }
     func takeGiftcardPayment(_ paymentInfo:PaymentInfo, qrScanner:QRScanner) {
         qrScanner.activateQRScanner {
             print("S is for Single Responsibility Principle")
