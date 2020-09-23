@@ -17,7 +17,8 @@
 		0E9BE230250A56B0002699B1 /* ViewController_S.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BE22F250A56B0002699B1 /* ViewController_S.swift */; };
 		0E9BE232250BE176002699B1 /* ViewController_SOL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BE231250BE176002699B1 /* ViewController_SOL.swift */; };
 		0E9BE234250BF242002699B1 /* ViewController_SOLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BE233250BF242002699B1 /* ViewController_SOLI.swift */; };
-		0E9BE236250BFBA8002699B1 /* ViewController_SOLID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BE235250BFBA8002699B1 /* ViewController_SOLID.swift */; };
+		0E9BE236250BFBA8002699B1 /* ViewController_SOLID2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9BE235250BFBA8002699B1 /* ViewController_SOLID2.swift */; };
+		0EE704B3251A2CE4004A43C0 /* ViewController_SOLID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE704B2251A2CE4004A43C0 /* ViewController_SOLID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		0E9BE22F250A56B0002699B1 /* ViewController_S.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_S.swift; sourceTree = "<group>"; };
 		0E9BE231250BE176002699B1 /* ViewController_SOL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_SOL.swift; sourceTree = "<group>"; };
 		0E9BE233250BF242002699B1 /* ViewController_SOLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_SOLI.swift; sourceTree = "<group>"; };
-		0E9BE235250BFBA8002699B1 /* ViewController_SOLID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_SOLID.swift; sourceTree = "<group>"; };
+		0E9BE235250BFBA8002699B1 /* ViewController_SOLID2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_SOLID2.swift; sourceTree = "<group>"; };
+		0EE704B2251A2CE4004A43C0 /* ViewController_SOLID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController_SOLID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,8 @@
 				0E9BE22F250A56B0002699B1 /* ViewController_S.swift */,
 				0E9BE231250BE176002699B1 /* ViewController_SOL.swift */,
 				0E9BE233250BF242002699B1 /* ViewController_SOLI.swift */,
-				0E9BE235250BFBA8002699B1 /* ViewController_SOLID.swift */,
+				0EE704B2251A2CE4004A43C0 /* ViewController_SOLID.swift */,
+				0E9BE235250BFBA8002699B1 /* ViewController_SOLID2.swift */,
 				0E9BE21E250A38C4002699B1 /* Main.storyboard */,
 				0E9BE223250A38C4002699B1 /* LaunchScreen.storyboard */,
 			);
@@ -166,7 +169,8 @@
 				0E9BE219250A38C4002699B1 /* AppDelegate.swift in Sources */,
 				0E9BE21B250A38C4002699B1 /* SceneDelegate.swift in Sources */,
 				0E9BE22E250A42F0002699B1 /* Helpers.swift in Sources */,
-				0E9BE236250BFBA8002699B1 /* ViewController_SOLID.swift in Sources */,
+				0E9BE236250BFBA8002699B1 /* ViewController_SOLID2.swift in Sources */,
+				0EE704B3251A2CE4004A43C0 /* ViewController_SOLID.swift in Sources */,
 				0E9BE234250BF242002699B1 /* ViewController_SOLI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,9 @@ enum PaymentMethod: String{
     case giftcard = "giftcard"
     case paypal = "paypal"
     case mercadolibre = "mercadolibre"
+    //case bitcoin = "bitcoin"
+    //case wiretransfer = "wt"
+    //case ethereum = "ethereum"
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {

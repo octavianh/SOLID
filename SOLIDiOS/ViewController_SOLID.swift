@@ -2,25 +2,20 @@
 //  ViewController_SOLID.swift
 //  SOLIDiOS
 //
-//  Created by O on 2020-09-11.
+//  Created by O on 2020-09-22.
 //
 
 import Foundation
 import UIKit
 
-protocol PaymentProcessor {
-    func takePayment(method:PaymentMethod,
-                     paymentInfo:PaymentInfo)
+
+protocol CreatesPaymentsServices {
+    func paymentServiceFor(method:PaymentMethod) -> BetterBasePaymentTakingService?
 }
 
 class ViewController_SOLID: ViewController_SOLI {
-
-    var paymentProcessor: PaymentProcessor?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        paymentProcessor = SOLIDPaymentProcessor(qrScanner: self.qrScanner, presenter: self)
-    }
+    let serviceCreator: CreatesPaymentsServices = SOLIDPaymentServiceFactory()
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !user.isLoggedIn() {
@@ -28,31 +23,33 @@ class ViewController_SOLID: ViewController_SOLI {
             return
         }
         let method = paymentMethods()[indexPath.row]
-        paymentProcessor?.takePayment(method: method, paymentInfo: paymentInfo)
-    }
-}
-
-class SOLIDPaymentProcessor: PaymentProcessor {
-    var qrScanner: QRScanner
-    var presenter: ViewController
-    
-    init(qrScanner:QRScanner, presenter: ViewController){
-        self.qrScanner = qrScanner
-        self.presenter = presenter
-    }
-    
-    func takePayment(method:PaymentMethod,
-                     paymentInfo:PaymentInfo){
-        
-        let service = BetterPaymentServiceFactory.paymentService(method: method)
-        
+        qrScanner.presenter = self
+        let service = serviceCreator.paymentServiceFor(method: method)
         switch method {
         case .giftcard:
             qrScanner.activateQRScanner {
-                service?.takePayment(paymentInfo: paymentInfo)
+                service?.takePayment(paymentInfo: self.paymentInfo)
             }
         default:
             service?.takePayment(paymentInfo: paymentInfo)
+        }
+    }
+}
+
+class SOLIDPaymentServiceFactory: CreatesPaymentsServices {
+    func paymentServiceFor(method:PaymentMethod) -> BetterBasePaymentTakingService? {
+        switch method {
+        case .visa:
+            return BetterVisaPaymentTakingService()
+        case .mastercard:
+            return BetterMastercardPaymentTakingService()
+        case .giftcard:
+            return BetterGiftcardPaymentTakingService()
+        case .paypal:
+            return BetterPayPalPaymentTakingService()
+        default:
+            print("unsupported")
+            return nil
         }
     }
 }
