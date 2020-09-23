@@ -1,5 +1,3 @@
 # SOLID
 
-Hi Conor
-
-Butts Butts Butts
+Hi Mobile Geeks!
